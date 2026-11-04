@@ -2,7 +2,7 @@
 title: "AimHub Script"
 description: "Script Roblox Aim Universal"
 category: "ROBLOX SCRIPT"
-date: "2026-11-05"
+date: "2026-09-07"
 tags: [SCRIPT, ROBLOX, AIMHUB, ITSFOUR]
 ---
 
@@ -19,14 +19,14 @@ tags: [SCRIPT, ROBLOX, AIMHUB, ITSFOUR]
 </div>
 
 <div align="center">
-<img src="https://github.com/itsfour/itsfour/blob/main/generated/itsfour.svg" width="250"  alt="itsfour animated name">
+<img src="https://raw.githubusercontent.com/itsfour/itsfour/refs/heads/main/generated/itsfour.svg" width="250"  alt="itsfour animated name">
 
 · **`UI CONFIG`** **`Aimbot`** **`Triggerbot`** **`FOV`** **`TRACERS`** **`ESP`** **`DOT`** **`other features`** ·
 <br>· *This project is currently in beta testing. Feel free to create pull requests (you will be credited), report issues, or contact me through any of my linked platforms.*
 
 ---
 **⚙️Language**
-<details><summary><a id="tieng-viet"></a> <img src="https://flagcdn.com/w40/vn.png" width="20" alt="Vietnam flag"/> Tiếng Việt</summary>
+<summary><a id="tieng-viet"></a> <img src="https://flagcdn.com/w40/vn.png" width="20" alt="Vietnam flag"/> Tiếng Việt</summary>
 
 ## ✨ Tính năng
 
@@ -109,8 +109,8 @@ Nếu gặp lỗi, hãy gửi:
 
 Chỉ gửi thông tin cần thiết; không đính kèm cookie, token hoặc dữ liệu tài khoản cá nhân.
 
-</details>
-<details> <summary> <a id="english"></a> <img src="https://flagcdn.com/w40/gb.png" width="20" alt="UK flag"/> English</summary>
+
+ <summary> <a id="english"></a> <img src="https://flagcdn.com/w40/gb.png" width="20" alt="UK flag"/> English</summary>
 
 ## 📖 Introduction
 

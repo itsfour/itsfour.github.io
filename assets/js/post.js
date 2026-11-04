@@ -90,7 +90,19 @@ function showError(message) {
 
 }
 
+function parseTags(value) {
 
+    if (!value) return [];
+
+    if (Array.isArray(value)) return value;
+
+    return String(value)
+        .replace(/^\[|\]$/g, "")
+        .split(",")
+        .map(tag => tag.trim().replace(/^["']|["']$/g, ""))
+        .filter(Boolean);
+
+}
 async function loadArticle() {
 
     if (!slug) {
@@ -106,7 +118,8 @@ async function loadArticle() {
     try {
 
         const response = await fetch(
-            `posts/${encodeURIComponent(slug)}.md`
+            `posts/${encodeURIComponent(slug)}.md`,
+            { cache: "no-store" }
         );
 
         if (!response.ok) {
@@ -133,20 +146,46 @@ async function loadArticle() {
         const date =
             metadata.date || "";
 
+        const tags = parseTags(metadata.tags);
 
         document.title =
             `${title} | ITSFOUR_ HUB`;
 
 
+        // Chuyển Markdown thành HTML
         const renderedMarkdown = marked.parse(markdown);
 
+
+        // Cho phép hiển thị hình ảnh và HTML trong Markdown
         const safeMarkdown = DOMPurify.sanitize(
             renderedMarkdown,
             {
+                ADD_TAGS: [
+                    "img",
+                    "div",
+                    "figure",
+                    "figcaption"
+                ],
+
                 ADD_ATTR: [
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "align",
+                    "loading",
+                    "decoding",
                     "target",
-                    "rel"
-                ]
+                    "rel",
+                    "class",
+                    "style"
+                ],
+
+                ADD_URI_SAFE_ATTR: [
+                    "src"
+                ],
+
+                ALLOW_DATA_ATTR: false
             }
         );
 
@@ -163,8 +202,14 @@ async function loadArticle() {
                 <h1>${escapeHTML(title)}</h1>
 
                 <p class="article-description">
-                    ${escapeHTML(description)}
+                   ${escapeHTML(description)}
                 </p>
+
+                <div class="article-tags">
+                    ${tags.map(tag => `
+                        <span class="article-tag">#${escapeHTML(tag)}</span>
+                    `).join("")}
+                </div>
 
             </header>
 
@@ -189,6 +234,25 @@ async function loadArticle() {
         `;
 
 
+        // Xử lý ảnh SVG và ảnh bên ngoài
+        articleContent
+            .querySelectorAll(".markdown-body img")
+            .forEach(img => {
+
+                img.loading = "lazy";
+                img.decoding = "async";
+
+                img.style.maxWidth = "100%";
+                img.style.height = "auto";
+
+                img.onerror = () => {
+                    img.alt = "KHÔNG THỂ TẢI HÌNH ẢNH";
+                };
+
+            });
+
+
+        // Sao chép liên kết
         document
             .getElementById("copyLink")
             .addEventListener("click", async () => {
@@ -219,6 +283,7 @@ async function loadArticle() {
             });
 
 
+        // Quay lại trang chủ
         document
             .getElementById("backHome")
             .addEventListener("click", () => {

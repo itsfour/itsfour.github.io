@@ -489,6 +489,23 @@ input {
     animation: blink 1s infinite;
 }
 
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.article-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 255, 100, 0.25);
+    border-radius: 4px;
+    background: rgba(0, 255, 100, 0.06);
+    color: #00e676;
+    font-family: monospace;
+    font-size: 12px;
+}
 
 /* GIỚI THIỆU */
 

@@ -1,0 +1,300 @@
+const articleContent = document.getElementById("articleContent");
+
+const params = new URLSearchParams(
+    window.location.search
+);
+
+const slug = params.get("slug");
+
+
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+
+function parseMarkdownFile(content) {
+
+    const match = content.match(
+        /^---\s*\n([\s\S]*?)\n---\s*\n?/
+    );
+
+    const metadata = {};
+
+    let markdown = content;
+
+    if (match) {
+
+        match[1].split("\n").forEach(line => {
+
+            const index = line.indexOf(":");
+
+            if (index === -1) return;
+
+            const key = line.slice(0, index).trim();
+
+            const value = line
+                .slice(index + 1)
+                .trim()
+                .replace(/^["']|["']$/g, "");
+
+            metadata[key] = value;
+
+        });
+
+        markdown = content.slice(match[0].length);
+
+    }
+
+    return {
+        metadata,
+        markdown
+    };
+
+}
+
+
+function formatDate(date) {
+
+    if (!date) return "CHƯA CÓ NGÀY";
+
+    const parsed = new Date(date + "T00:00:00");
+
+    if (Number.isNaN(parsed.getTime())) {
+        return escapeHTML(date);
+    }
+
+    return parsed.toLocaleDateString("vi-VN");
+
+}
+
+
+function showError(message) {
+
+    articleContent.innerHTML = `
+        <div class="error-box">
+            KHÔNG THỂ MỞ BÀI VIẾT.
+            <br><br>
+            ${escapeHTML(message)}
+            <br><br>
+            <a href="index.html#baiviet">
+                ← QUAY LẠI TRANG CHỦ
+            </a>
+        </div>
+    `;
+
+}
+
+function parseTags(value) {
+
+    if (!value) return [];
+
+    if (Array.isArray(value)) return value;
+
+    return String(value)
+        .replace(/^\[|\]$/g, "")
+        .split(",")
+        .map(tag => tag.trim().replace(/^["']|["']$/g, ""))
+        .filter(Boolean);
+
+}
+async function loadArticle() {
+
+    if (!slug) {
+        showError("Không tìm thấy mã bài viết.");
+        return;
+    }
+
+    if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+        showError("Mã bài viết không hợp lệ.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `posts/${encodeURIComponent(slug)}.md`,
+            { cache: "no-store" }
+        );
+
+        if (!response.ok) {
+            throw new Error("Tệp bài viết không tồn tại.");
+        }
+
+        const content = await response.text();
+
+        const {
+            metadata,
+            markdown
+        } = parseMarkdownFile(content);
+
+
+        const title =
+            metadata.title || slug.replace(/-/g, " ");
+
+        const description =
+            metadata.description || "";
+
+        const category =
+            metadata.category || "GENERAL";
+
+        const date =
+            metadata.date || "";
+
+        const tags = parseTags(metadata.tags);
+
+        document.title =
+            `${title} | ITSFOUR_ HUB`;
+
+
+        // Chuyển Markdown thành HTML
+        const renderedMarkdown = marked.parse(markdown);
+
+
+        // Cho phép hiển thị hình ảnh và HTML trong Markdown
+        const safeMarkdown = DOMPurify.sanitize(
+            renderedMarkdown,
+            {
+                ADD_TAGS: [
+                    "img",
+                    "div",
+                    "figure",
+                    "figcaption"
+                ],
+
+                ADD_ATTR: [
+                    "src",
+                    "alt",
+                    "width",
+                    "height",
+                    "align",
+                    "loading",
+                    "decoding",
+                    "target",
+                    "rel",
+                    "class",
+                    "style"
+                ],
+
+                ADD_URI_SAFE_ATTR: [
+                    "src"
+                ],
+
+                ALLOW_DATA_ATTR: false
+            }
+        );
+
+
+        articleContent.innerHTML = `
+
+            <header class="article-header">
+
+                <div class="article-info">
+                    <span>${escapeHTML(category)}</span>
+                    <span>${formatDate(date)}</span>
+                </div>
+
+                <h1>${escapeHTML(title)}</h1>
+
+                <p class="article-description">
+                    ${escapeHTML(description)}
+                </p>
+
+            </header>
+
+
+            <article class="markdown-body">
+                ${safeMarkdown}
+            </article>
+
+
+            <div class="article-bottom">
+
+                <button id="copyLink">
+                    SAO CHÉP LIÊN KẾT
+                </button>
+
+                <button id="backHome">
+                    QUAY LẠI TRANG CHỦ
+                </button>
+
+            </div>
+
+        `;
+
+
+        // Xử lý ảnh SVG và ảnh bên ngoài
+        articleContent
+            .querySelectorAll(".markdown-body img")
+            .forEach(img => {
+
+                img.loading = "lazy";
+                img.decoding = "async";
+
+                img.style.maxWidth = "100%";
+                img.style.height = "auto";
+
+                img.onerror = () => {
+                    img.alt = "KHÔNG THỂ TẢI HÌNH ẢNH";
+                };
+
+            });
+
+
+        // Sao chép liên kết
+        document
+            .getElementById("copyLink")
+            .addEventListener("click", async () => {
+
+                const button =
+                    document.getElementById("copyLink");
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        window.location.href
+                    );
+
+                    button.textContent = "ĐÃ SAO CHÉP!";
+
+                } catch {
+
+                    button.textContent =
+                        "KHÔNG THỂ SAO CHÉP";
+
+                }
+
+                setTimeout(() => {
+                    button.textContent =
+                        "SAO CHÉP LIÊN KẾT";
+                }, 2000);
+
+            });
+
+
+        // Quay lại trang chủ
+        document
+            .getElementById("backHome")
+            .addEventListener("click", () => {
+
+                window.location.href =
+                    "index.html#baiviet";
+
+            });
+
+
+    } catch (error) {
+
+        showError(error.message);
+
+    }
+
+}
+
+
+loadArticle();
