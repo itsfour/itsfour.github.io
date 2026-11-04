@@ -1,28 +1,8 @@
 [
     {
-        "slug": "markdown-publishing-guide",
-        "title": "Markdown Publishing Guide",
-        "description": "",
-        "category": "GUIDE",
-        "date": "2026-11-05",
-        "tags": []
-    },
-    {
-        "slug": "welcome-to-itsfour-hub",
-        "title": "Welcome to ITSFOUR_ HUB",
-        "description": "Welcome to my personal developer space.",
-        "category": "ANNOUNCEMENT",
-        "date": "2026-11-05",
-        "tags": [
-            "welcome",
-            "hub",
-            "developer"
-        ]
-    },
-    {
         "slug": "test-markdown",
         "title": "Markdown Test // ITSFOUR_ HUB",
-        "description": "Bài viết mẫu để kiểm tra tự động phát hiện bài đăng, metadata và hiển thị Markdown.",
+        "description": "Bài viết kiểm tra auto metadata và hiển thị Markdown.",
         "category": "TEST",
         "date": "2026-11-05",
         "tags": [
@@ -30,18 +10,6 @@
             "Test",
             "GitHub Pages",
             "ITSFOUR"
-        ]
-    },
-    {
-        "slug": "android-mod",
-        "title": "Android Mod",
-        "description": "Chia sẻ các bản mod và công cụ Android.",
-        "category": "ANDROID",
-        "date": "2026-11-05",
-        "tags": [
-            "Android",
-            "Mod",
-            "Tools"
         ]
     }
 ]
