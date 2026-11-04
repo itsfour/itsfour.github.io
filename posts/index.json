@@ -1,5 +1,17 @@
 [
     {
+        "slug": "android-mod",
+        "title": "Android Mod",
+        "description": "Chia sẻ các bản mod và công cụ Android.",
+        "category": "ANDROID",
+        "date": "2026-11-05",
+        "tags": [
+            "Android",
+            "Mod",
+            "Tools"
+        ]
+    },
+    {
         "slug": "markdown-publishing-guide",
         "title": "Markdown Publishing Guide",
         "description": "",
@@ -20,15 +32,16 @@
         ]
     },
     {
-        "slug": "android-mod",
-        "title": "Android Mod",
-        "description": "Chia sẻ các bản mod và công cụ Android.",
-        "category": "ANDROID",
+        "slug": "test-markdown",
+        "title": "Markdown Test // ITSFOUR_ HUB",
+        "description": "Bài viết mẫu để kiểm tra tự động phát hiện bài đăng, metadata và hiển thị Markdown.",
+        "category": "TEST",
         "date": "2026-11-05",
         "tags": [
-            "Android",
-            "Mod",
-            "Tools"
+            "Markdown",
+            "Test",
+            "GitHub Pages",
+            "ITSFOUR"
         ]
     }
 ]
