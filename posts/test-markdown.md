@@ -1,6 +1,6 @@
 ---
 title: "Markdown Test // ITSFOUR_ HUB"
-description: "Bài viết mẫu để kiểm tra tự động phát hiện bài đăng, metadata và hiển thị Markdown."
+description: "Bài viết kiểm tra auto metadata và hiển thị Markdown."
 category: "TEST"
 date: "2026-11-05"
 tags: [Markdown, Test, GitHub Pages, ITSFOUR]
