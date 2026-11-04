@@ -14,33 +14,36 @@
     };
 
     // ==============================
+    // BASE PATH
+    // ==============================
+
+    function getBasePath() {
+        const script = [...document.scripts].find(item =>
+            item.src.includes("/assets/js/post.js")
+        );
+
+        if (script) {
+            return new URL("../../../", script.src).href;
+        }
+
+        return new URL("./", location.href).href;
+    }
+
+    const BASE_PATH = getBasePath();
+
+    // ==============================
     // LOAD LIBRARIES
     // ==============================
 
     function loadScript(src) {
         return new Promise((resolve, reject) => {
-            const existing = [...document.scripts].find(
-                script => script.src === src
-            );
-
-            if (existing) {
-                if (
-                    (src.includes("marked") && window.marked) ||
-                    (src.includes("purify") && window.DOMPurify)
-                ) {
-                    resolve();
-                    return;
-                }
-
-                existing.addEventListener("load", resolve, { once: true });
-                existing.addEventListener("error", reject, { once: true });
-                return;
-            }
-
             const script = document.createElement("script");
+
             script.src = src;
             script.onload = resolve;
-            script.onerror = reject;
+            script.onerror = () => reject(
+                new Error("Không thể tải thư viện: " + src)
+            );
 
             document.head.appendChild(script);
         });
@@ -56,7 +59,7 @@
         }
 
         if (!window.marked || !window.DOMPurify) {
-            throw new Error("Không thể tải thư viện Markdown.");
+            throw new Error("MARKDOWN_LIBRARY_ERROR");
         }
     }
 
@@ -65,8 +68,7 @@
     // ==============================
 
     function getSlug() {
-        const params = new URLSearchParams(location.search);
-        const slug = params.get("slug");
+        const slug = new URLSearchParams(location.search).get("slug");
 
         if (!slug || !/^[a-zA-Z0-9_-]+$/.test(slug)) {
             return null;
@@ -77,19 +79,15 @@
 
     // ==============================
     // PARSE FRONT MATTER
-    // Đồng bộ với workflow Python
     // ==============================
 
     function parseFrontMatter(markdown) {
-        const result = {
-            metadata: {
-                title: "",
-                description: "",
-                category: "GENERAL",
-                date: "",
-                tags: []
-            },
-            content: markdown
+        const metadata = {
+            title: "",
+            description: "",
+            category: "GENERAL",
+            date: "",
+            tags: []
         };
 
         const match = markdown.match(
@@ -97,54 +95,31 @@
         );
 
         if (!match) {
-            return result;
+            return { metadata, content: markdown };
         }
 
-        const frontMatter = match[1];
-
-        result.content = markdown.slice(match[0].length);
-
-        frontMatter.split(/\r?\n/).forEach(line => {
+        match[1].split(/\r?\n/).forEach(line => {
             const separator = line.indexOf(":");
 
-            if (separator === -1) return;
+            if (separator < 0) return;
 
-            const key = line
-                .slice(0, separator)
-                .trim()
-                .toLowerCase();
-
-            let value = line
-                .slice(separator + 1)
-                .trim();
-
-            // Bỏ dấu nháy bao quanh giá trị
-            if (
-                (value.startsWith('"') && value.endsWith('"')) ||
-                (value.startsWith("'") && value.endsWith("'"))
-            ) {
-                value = value.slice(1, -1);
-            }
+            const key = line.slice(0, separator).trim().toLowerCase();
+            const value = line.slice(separator + 1).trim();
 
             if (key === "tags") {
-                result.metadata.tags = parseTags(value);
-                return;
-            }
-
-            if (Object.prototype.hasOwnProperty.call(
-                result.metadata,
-                key
-            )) {
-                result.metadata[key] = value;
+                metadata.tags = parseTags(value);
+            } else if (
+                Object.prototype.hasOwnProperty.call(metadata, key)
+            ) {
+                metadata[key] = value.replace(/^["']|["']$/g, "");
             }
         });
 
-        return result;
+        return {
+            metadata,
+            content: markdown.slice(match[0].length)
+        };
     }
-
-    // Hỗ trợ:
-    // tags: [Android, Mod, Tutorial]
-    // tags: Android, Mod, Tutorial
 
     function parseTags(value) {
         value = value.trim();
@@ -152,8 +127,6 @@
         if (value.startsWith("[") && value.endsWith("]")) {
             value = value.slice(1, -1);
         }
-
-        if (!value) return [];
 
         return value
             .split(",")
@@ -176,7 +149,7 @@
     }
 
     // ==============================
-    // MARKDOWN RENDER
+    // MARKDOWN
     // ==============================
 
     function renderMarkdown(content) {
@@ -185,22 +158,17 @@
             breaks: false
         });
 
-        const rawHTML = marked.parse(content);
-
-        // Làm sạch HTML trước khi đưa vào trang
-        return DOMPurify.sanitize(rawHTML, {
-            USE_PROFILES: {
-                html: true
-            },
-            ADD_ATTR: [
-                "target",
-                "rel"
-            ]
-        });
+        return DOMPurify.sanitize(
+            marked.parse(content),
+            {
+                USE_PROFILES: { html: true },
+                ADD_ATTR: ["target", "rel"]
+            }
+        );
     }
 
     // ==============================
-    // FORMAT DATE
+    // DATE
     // ==============================
 
     function formatDate(value) {
@@ -208,9 +176,7 @@
 
         const date = new Date(value);
 
-        if (Number.isNaN(date.getTime())) {
-            return value;
-        }
+        if (Number.isNaN(date.getTime())) return value;
 
         return new Intl.DateTimeFormat("vi-VN", {
             day: "2-digit",
@@ -220,7 +186,7 @@
     }
 
     // ==============================
-    // BUILD TAGS
+    // TAGS
     // ==============================
 
     function renderTags(tags) {
@@ -229,9 +195,7 @@
         return `
             <div class="article-tags">
                 ${tags.map(tag => `
-                    <span class="tag">
-                        #${escapeHTML(tag)}
-                    </span>
+                    <span class="tag">#${escapeHTML(tag)}</span>
                 `).join("")}
             </div>
         `;
@@ -244,8 +208,6 @@
     function renderArticle(metadata, content) {
         const title = metadata.title || "Untitled";
         const description = metadata.description || "";
-        const category = metadata.category || "GENERAL";
-        const date = formatDate(metadata.date);
 
         document.title = `${title} | ITSFOUR_ HUB`;
 
@@ -253,7 +215,7 @@
             <article class="article">
 
                 <div class="article-navigation">
-                    <a href="index.html#publications">
+                    <a href="${BASE_PATH}index.html#publications">
                         ← BACK TO PUBLICATIONS
                     </a>
                 </div>
@@ -262,7 +224,7 @@
 
                     <div class="article-category">
                         <span class="status-dot"></span>
-                        ${escapeHTML(category)}
+                        ${escapeHTML(metadata.category || "GENERAL")}
                     </div>
 
                     <h1 class="article-title">
@@ -276,10 +238,10 @@
                     ` : ""}
 
                     <div class="article-meta">
-                        ${date ? `
+                        ${metadata.date ? `
                             <span>
                                 <span class="meta-label">DATE:</span>
-                                ${escapeHTML(date)}
+                                ${escapeHTML(formatDate(metadata.date))}
                             </span>
                         ` : ""}
 
@@ -300,18 +262,12 @@
                 <footer class="article-footer">
 
                     <div class="article-actions">
-                        <button type="button" id="share-post">
-                            SHARE
-                        </button>
-
-                        <button type="button" id="copy-post">
-                            COPY LINK
-                        </button>
+                        <button type="button" id="share-post">SHARE</button>
+                        <button type="button" id="copy-post">COPY LINK</button>
                     </div>
 
                     <div class="article-footer-text">
-                        END OF DOCUMENT //
-                        ITSFOUR_ HUB
+                        END OF DOCUMENT // ITSFOUR_ HUB
                     </div>
 
                 </footer>
@@ -326,42 +282,6 @@
     // SHARE & COPY
     // ==============================
 
-    function bindActions() {
-        const shareButton = document.getElementById("share-post");
-        const copyButton = document.getElementById("copy-post");
-
-        const shareData = {
-            title: document.title,
-            text: document.querySelector(".article-description")
-                ?.textContent || document.title,
-            url: location.href
-        };
-
-        shareButton?.addEventListener("click", async () => {
-            try {
-                if (navigator.share) {
-                    await navigator.share(shareData);
-                } else {
-                    await copyText(location.href);
-                    showMessage("LINK COPIED");
-                }
-            } catch (error) {
-                if (error.name !== "AbortError") {
-                    showMessage("SHARE FAILED");
-                }
-            }
-        });
-
-        copyButton?.addEventListener("click", async () => {
-            try {
-                await copyText(location.href);
-                showMessage("LINK COPIED");
-            } catch {
-                showMessage("COPY FAILED");
-            }
-        });
-    }
-
     async function copyText(text) {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
@@ -375,16 +295,13 @@
         textarea.style.opacity = "0";
 
         document.body.appendChild(textarea);
-
         textarea.select();
 
         const success = document.execCommand("copy");
 
         textarea.remove();
 
-        if (!success) {
-            throw new Error("Copy failed");
-        }
+        if (!success) throw new Error("COPY_FAILED");
     }
 
     function showMessage(message) {
@@ -393,7 +310,6 @@
         if (!toast) {
             toast = document.createElement("div");
             toast.id = "hub-toast";
-
             document.body.appendChild(toast);
         }
 
@@ -407,8 +323,46 @@
         }, 2200);
     }
 
+    function bindActions() {
+        document.getElementById("share-post")?.addEventListener(
+            "click",
+            async () => {
+                try {
+                    if (navigator.share) {
+                        await navigator.share({
+                            title: document.title,
+                            text: document.querySelector(
+                                ".article-description"
+                            )?.textContent || document.title,
+                            url: location.href
+                        });
+                    } else {
+                        await copyText(location.href);
+                        showMessage("LINK COPIED");
+                    }
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        showMessage("SHARE FAILED");
+                    }
+                }
+            }
+        );
+
+        document.getElementById("copy-post")?.addEventListener(
+            "click",
+            async () => {
+                try {
+                    await copyText(location.href);
+                    showMessage("LINK COPIED");
+                } catch {
+                    showMessage("COPY FAILED");
+                }
+            }
+        );
+    }
+
     // ==============================
-    // ERROR DISPLAY
+    // ERROR
     // ==============================
 
     function showError(title, description) {
@@ -416,20 +370,17 @@
 
         ARTICLE.innerHTML = `
             <div class="article-error">
-
                 <div class="article-category">
                     <span class="status-dot"></span>
                     SYSTEM MESSAGE
                 </div>
 
                 <h1>${escapeHTML(title)}</h1>
-
                 <p>${escapeHTML(description)}</p>
 
-                <a href="index.html#publications">
+                <a href="${BASE_PATH}index.html#publications">
                     ← BACK TO PUBLICATIONS
                 </a>
-
             </div>
         `;
     }
@@ -444,7 +395,7 @@
         if (!slug) {
             showError(
                 "404 // INVALID REQUEST",
-                "The requested publication does not exist."
+                "Invalid publication identifier."
             );
             return;
         }
@@ -459,41 +410,44 @@
         try {
             await loadLibraries();
 
-            const response = await fetch(
-                `posts/${encodeURIComponent(slug)}.md`
+            const postURL = new URL(
+                `posts/${encodeURIComponent(slug)}.md`,
+                BASE_PATH
             );
 
+            console.log("[ITSFOUR HUB] Loading:", postURL.href);
+
+            const response = await fetch(postURL.href, {
+                cache: "no-store"
+            });
+
+            if (response.status === 404) {
+                showError(
+                    "404 // POST NOT FOUND",
+                    "The requested Markdown file was not found."
+                );
+                return;
+            }
+
             if (!response.ok) {
-                throw new Error("POST_NOT_FOUND");
+                throw new Error("HTTP_" + response.status);
             }
 
             const markdown = await response.text();
-
             const parsed = parseFrontMatter(markdown);
 
-            renderArticle(
-                parsed.metadata,
-                parsed.content
-            );
+            renderArticle(parsed.metadata, parsed.content);
 
         } catch (error) {
             console.error("[ITSFOUR HUB]", error);
 
-            if (error.message === "POST_NOT_FOUND") {
-                showError(
-                    "404 // POST NOT FOUND",
-                    "This publication may have been removed or does not exist."
-                );
-            } else {
-                showError(
-                    "500 // LOAD ERROR",
-                    "Unable to load this publication. Please try again later."
-                );
-            }
+            showError(
+                "500 // LOAD ERROR",
+                "Unable to load publication. Check the browser console or try again."
+            );
         }
     }
 
-    // START
     loadPost();
 
 })();
