@@ -4,24 +4,11 @@
         "title": "AimHub Script",
         "description": "Script Roblox Aim Universal",
         "category": "ROBLOX SCRIPT",
-        "date": "2026-11-05",
+        "date": "2026-09-07",
         "tags": [
             "SCRIPT",
             "ROBLOX",
             "AIMHUB",
-            "ITSFOUR"
-        ]
-    },
-    {
-        "slug": "test-markdown",
-        "title": "Markdown Test // ITSFOUR_ HUB",
-        "description": "Bài viết kiểm tra auto metadata và hiển thị Markdown.",
-        "category": "TEST",
-        "date": "2026-11-05",
-        "tags": [
-            "Markdown",
-            "Test",
-            "GitHub Pages",
             "ITSFOUR"
         ]
     }
