@@ -1,195 +1,216 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080b09">
-<meta name="description" content="ITSFOUR_ HUB - Developer Hub">
-<title>ITSFOUR_ HUB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+    <meta name="theme-color" content="#080c0a">
+    <meta name="description" content="ITSFOUR_ HUB - Không gian chia sẻ ứng dụng, bản chỉnh sửa và công cụ công nghệ.">
+
+    <title>ITSFOUR_ HUB | Trang chủ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
-<div class="terminal">
-
 <header class="topbar">
-    <div class="window-controls">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
+    <a href="index.html" class="logo">
+        ITSFOUR<span>_</span> HUB
+    </a>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        HỆ THỐNG TRỰC TUYẾN
     </div>
 
-    <div class="terminal-title">ITSFOUR_ HUB <span>/ home</span></div>
-
-    <div class="status">
-        <span class="status-light"></span>
-        ONLINE
-    </div>
+    <a href="https://github.com/itsfour" target="_blank" class="github-btn">
+        GITHUB ↗
+    </a>
 </header>
 
-<div class="layout">
+<main>
 
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">I_</div>
-        <div>
-            <strong>ITSFOUR_</strong>
-            <small>DEVELOPER HUB</small>
-        </div>
-    </div>
+    <!-- GIỚI THIỆU -->
+    <section class="hero">
 
-    <div class="nav-label">NAVIGATION</div>
+        <div class="terminal-window">
 
-    <nav>
-        <a href="#home" class="nav-item active">⌂ <span>Overview</span></a>
-        <a href="#posts" class="nav-item">▤ <span>Publications</span></a>
-        <a href="#projects" class="nav-item">⌘ <span>Projects</span></a>
-        <a href="#downloads" class="nav-item">↓ <span>Downloads</span></a>
-        <a href="#about" class="nav-item">ⓘ <span>About</span></a>
-    </nav>
+            <div class="terminal-bar">
+                <div class="terminal-dots">
+                    <i></i><i></i><i></i>
+                </div>
 
-    <div class="sidebar-bottom">
-        <span class="status-light"></span>
-        All systems operational
-        <small>ITSFOUR HUB © 2026</small>
-    </div>
-</aside>
+                <span>itsfour@hub: ~</span>
 
-<main class="content">
+                <span class="terminal-version">PHIÊN BẢN 1.0</span>
+            </div>
 
-<section id="home" class="hero">
-    <div class="eyebrow">
-        <span class="status-light"></span>
-        WELCOME TO MY DIGITAL SPACE
-    </div>
+            <div class="terminal-content">
 
-    <h1>ITSFOUR_<span> HUB</span></h1>
+                <div class="terminal-line">
+                    <span class="prompt">itsfour@hub:~$</span>
+                    <span>khoi-dong-he-thong</span>
+                </div>
 
-    <p class="hero-description">
-        A personal developer space for projects, tools,
-        modifications and technical publications.
-    </p>
+                <div class="terminal-output">
+                    Đang kết nối đến ITSFOUR_ HUB...
+                </div>
 
-    <div class="hero-actions">
-        <a href="#posts" class="button primary">Explore Publications ↗</a>
-        <a href="#projects" class="button secondary">View Projects</a>
-    </div>
+                <div class="terminal-output success">
+                    ✓ Kết nối thành công.
+                </div>
 
-    <div class="terminal-command">
-        <span class="prompt">itsfour@hub:~$</span>
-        <span>system.status</span>
-        <span class="cursor"></span>
-        <span class="command-result">[ RUNNING ]</span>
-    </div>
-</section>
+                <div class="hero-title">
+                    XIN CHÀO, <span>THẾ GIỚI!</span>
+                </div>
 
-<section class="stats">
-    <div class="stat-card">
-        <small>PUBLICATIONS</small>
-        <strong id="post-count">--</strong>
-    </div>
+                <h1>
+                    ITSFOUR<span>_</span> HUB
+                </h1>
 
-    <div class="stat-card">
-        <small>PROJECTS</small>
-        <strong>--</strong>
-    </div>
+                <p class="hero-description">
+                    Sáng tạo. Chỉnh sửa. Chia sẻ.
+                    <br>
+                    Không gian dành cho ứng dụng, bản MOD,
+                    công cụ và những kiến thức công nghệ.
+                </p>
 
-    <div class="stat-card">
-        <small>STATUS</small>
-        <strong class="green-text">ONLINE</strong>
-    </div>
-</section>
+                <div class="hero-actions">
+                    <a href="#baiviet" class="primary-btn">
+                        KHÁM PHÁ BÀI VIẾT
+                    </a>
 
-<section id="posts" class="section">
-    <div class="section-heading">
-        <div>
-            <span class="section-index">01 / CONTENT</span>
-            <h2>Publications<span>.</span></h2>
+                    <a href="https://github.com/itsfour"
+                       target="_blank"
+                       class="secondary-btn">
+                        MÃ NGUỒN ↗
+                    </a>
+                </div>
+
+                <div class="terminal-footer">
+                    <span>NGƯỜI DÙNG: KHÁCH</span>
+                    <span>TRẠNG THÁI: SẴN SÀNG</span>
+                </div>
+
+            </div>
         </div>
 
-        <span class="section-note">LATEST UPDATES</span>
-    </div>
+    </section>
 
-    <div class="search-box">
-        <span>⌕</span>
-        <input id="search" type="search"
-        placeholder="Search publications..." autocomplete="off">
-        <kbd>SEARCH</kbd>
-    </div>
 
-    <div id="post-list" class="post-grid">
-        <div class="loading">Loading publications...</div>
-    </div>
+    <!-- DANH SÁCH BÀI VIẾT -->
+    <section class="publications" id="baiviet">
 
-    <div id="empty" class="empty" hidden>
-        No publications found.
-    </div>
-</section>
+        <div class="section-heading">
+            <div>
+                <div class="section-label">
+                    ./DANH-SÁCH
+                </div>
 
-<section id="projects" class="section">
-    <div class="section-heading">
-        <div>
-            <span class="section-index">02 / DEVELOPMENT</span>
-            <h2>Projects<span>.</span></h2>
+                <h2>BÀI VIẾT</h2>
+
+                <p>
+                    Khám phá các nội dung được chia sẻ trên ITSFOUR_ HUB.
+                </p>
+            </div>
+
+            <div class="post-count" id="postCount">
+                0 BÀI VIẾT
+            </div>
         </div>
-    </div>
 
-    <div class="project-card">
-        <div class="project-icon">⌘</div>
-        <div>
-            <h3>ITSFOUR_ HUB</h3>
-            <p>Personal developer website powered by GitHub Pages.</p>
-            <span class="tag">WEB DEVELOPMENT</span>
+
+        <!-- TÌM KIẾM -->
+        <div class="search-box">
+            <span>⌕</span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Tìm kiếm bài viết..."
+                autocomplete="off"
+            >
+
+            <kbd>/</kbd>
         </div>
-        <span class="project-status">ACTIVE</span>
-    </div>
-</section>
 
-<section id="downloads" class="section">
-    <div class="section-heading">
-        <div>
-            <span class="section-index">03 / RESOURCES</span>
-            <h2>Downloads<span>.</span></h2>
+
+        <!-- DANH MỤC -->
+        <div class="category-list" id="categoryList">
+            <button class="category-btn active" data-category="ALL">
+                TẤT CẢ
+            </button>
         </div>
-    </div>
 
-    <div class="empty">
-        <span class="green-text">[ INFO ]</span>
-        No downloadable resources yet.
-    </div>
-</section>
 
-<section id="about" class="section">
-    <div class="section-heading">
-        <div>
-            <span class="section-index">04 / INFORMATION</span>
-            <h2>About<span>.</span></h2>
+        <!-- BÀI VIẾT -->
+        <div class="posts-grid" id="postsGrid">
+
+            <div class="loading-box">
+                <span class="loading-dot"></span>
+                ĐANG TẢI DANH SÁCH BÀI VIẾT...
+            </div>
+
         </div>
-    </div>
 
-    <div class="about-card">
+        <div class="empty-box" id="emptyBox" hidden>
+            KHÔNG TÌM THẤY BÀI VIẾT PHÙ HỢP.
+        </div>
+
+    </section>
+
+
+    <!-- GIỚI THIỆU -->
+    <section class="about-section">
+
+        <div class="section-label">
+            ./THÔNG-TIN
+        </div>
+
+        <h2>VỀ ITSFOUR<span>_</span> HUB</h2>
+
         <p>
-            Welcome to ITSFOUR_ HUB.
-            This is a personal space for sharing projects,
-            development notes, tools and publications.
+            ITSFOUR_ HUB là nơi lưu trữ và chia sẻ các sản phẩm,
+            công cụ, bản chỉnh sửa ứng dụng cùng những hướng dẫn
+            được thực hiện bởi ITSFOUR_.
         </p>
-        <p class="green-text">Built with HTML, CSS, JavaScript & Markdown.</p>
-    </div>
-</section>
 
-<footer>
-    <span>© 2026 ITSFOUR_ HUB</span>
-    <span>DESIGNED FOR DEVELOPERS <span class="green-text">●</span></span>
-</footer>
+        <div class="about-terminal">
+            <span class="prompt">itsfour@hub:~$</span>
+            <span>echo "Cảm ơn bạn đã ghé thăm!"</span>
+            <br>
+            <span class="success">Cảm ơn bạn đã ghé thăm!</span>
+        </div>
+
+    </section>
 
 </main>
-</div>
-</div>
+
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        ITSFOUR<span>_</span> HUB
+    </div>
+
+    <p>
+        Được xây dựng và phát triển bởi ITSFOUR_.
+    </p>
+
+    <div class="footer-bottom">
+        © 2026 ITSFOUR_ HUB · BẢN QUYỀN THUỘC VỀ TÁC GIẢ
+    </div>
+
+</footer>
+
 
 <script src="assets/js/app.js"></script>
+
 </body>
 </html>

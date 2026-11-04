@@ -1,124 +1,81 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080b09">
 
-<title>Publication | ITSFOUR_ HUB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+    <meta name="theme-color" content="#080c0a">
 
-<style>
-.article {
-    max-width: 850px;
-    margin: auto;
-}
+    <title>Đang tải bài viết | ITSFOUR_ HUB</title>
 
-.back {
-    color: var(--green);
-    display: inline-block;
-    margin-bottom: 35px;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.article h1 {
-    font-size: clamp(28px,5vw,45px);
-    letter-spacing: -2px;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-.article-meta {
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    font-size: 10px;
-}
+    <link rel="stylesheet" href="assets/css/style.css">
 
-.markdown {
-    color: #bdc9c0;
-    line-height: 1.9;
-    overflow-wrap: anywhere;
-}
-
-.markdown h2,
-.markdown h3 {
-    color: var(--text);
-    margin-top: 35px;
-}
-
-.markdown a {
-    color: var(--green);
-}
-
-.markdown pre {
-    overflow-x: auto;
-    background: #050806;
-    padding: 18px;
-    border: 1px solid var(--border);
-}
-
-.markdown code {
-    color: var(--green);
-}
-
-.markdown blockquote {
-    border-left: 3px solid var(--green);
-    padding-left: 15px;
-    color: var(--muted);
-}
-
-.markdown img {
-    max-width: 100%;
-}
-
-.article-actions {
-    display: flex;
-    gap: 10px;
-    margin: 25px 0;
-}
-
-.article-actions button {
-    font-family: inherit;
-    padding: 10px 15px;
-    color: var(--green);
-    background: var(--panel);
-    border: 1px solid var(--border);
-    cursor: pointer;
-}
-
-</style>
 </head>
 
 <body>
 
 <header class="topbar">
-    <div class="window-controls">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
+
+    <a href="index.html" class="logo">
+        ITSFOUR<span>_</span> HUB
+    </a>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        CHẾ ĐỘ ĐỌC BÀI
     </div>
-    <div class="terminal-title">ITSFOUR_ HUB <span>/ publication</span></div>
-    <div class="status"><span class="status-light"></span> ONLINE</div>
+
+    <a href="https://github.com/itsfour"
+       target="_blank"
+       class="github-btn">
+        GITHUB ↗
+    </a>
+
 </header>
 
-<main class="content article">
 
-<a href="index.html#posts" class="back">← Back to publications</a>
+<main class="article-container">
 
-<div id="article">
-    <div class="loading">Loading publication...</div>
-</div>
+    <a href="index.html#baiviet" class="back-link">
+        ← QUAY LẠI DANH SÁCH BÀI VIẾT
+    </a>
 
-<footer>
-    <span>© 2026 ITSFOUR_ HUB</span>
-    <span>END OF DOCUMENT</span>
-</footer>
+    <div id="articleContent">
+
+        <div class="loading-box">
+            <span class="loading-dot"></span>
+            ĐANG TẢI NỘI DUNG...
+        </div>
+
+    </div>
 
 </main>
 
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        ITSFOUR<span>_</span> HUB
+    </div>
+
+    <p>Được xây dựng và phát triển bởi ITSFOUR_.</p>
+
+    <div class="footer-bottom">
+        © 2026 ITSFOUR_ HUB
+    </div>
+
+</footer>
+
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+
 <script src="assets/js/post.js"></script>
 
 </body>
