@@ -1,18 +1,34 @@
 [
     {
+        "slug": "android-mod",
+        "title": "Android Mod",
+        "description": "Chia sẻ các bản mod và công cụ Android.",
+        "category": "ANDROID",
+        "date": "2026-11-05",
+        "tags": [
+            "Android",
+            "Mod",
+            "Tools"
+        ]
+    },
+    {
+        "slug": "markdown-publishing-guide",
+        "title": "Markdown Publishing Guide",
+        "description": "",
+        "category": "GUIDE",
+        "date": "2026-11-05",
+        "tags": []
+    },
+    {
         "slug": "welcome-to-itsfour-hub",
         "title": "Welcome to ITSFOUR_ HUB",
         "description": "Welcome to my personal developer space.",
         "category": "ANNOUNCEMENT",
         "date": "2026-11-05",
-        "tags": ["welcome", "hub", "developer"]
-    },
-    {
-        "slug": "markdown-publishing-guide",
-        "title": "Markdown Publishing Guide",
-        "description": "How to publish new articles using Markdown files.",
-        "category": "GUIDE",
-        "date": "2026-11-05",
-        "tags": ["markdown", "tutorial"]
+        "tags": [
+            "welcome",
+            "hub",
+            "developer"
+        ]
     }
 ]
