@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b09">
+<meta name="description" content="ITSFOUR_ HUB - Developer Hub">
+<title>ITSFOUR_ HUB</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div class="terminal">
+
+<header class="topbar">
+    <div class="window-controls">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+    </div>
+
+    <div class="terminal-title">ITSFOUR_ HUB <span>/ home</span></div>
+
+    <div class="status">
+        <span class="status-light"></span>
+        ONLINE
+    </div>
+</header>
+
+<div class="layout">
+
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-icon">I_</div>
+        <div>
+            <strong>ITSFOUR_</strong>
+            <small>DEVELOPER HUB</small>
+        </div>
+    </div>
+
+    <div class="nav-label">NAVIGATION</div>
+
+    <nav>
+        <a href="#home" class="nav-item active">⌂ <span>Overview</span></a>
+        <a href="#posts" class="nav-item">▤ <span>Publications</span></a>
+        <a href="#projects" class="nav-item">⌘ <span>Projects</span></a>
+        <a href="#downloads" class="nav-item">↓ <span>Downloads</span></a>
+        <a href="#about" class="nav-item">ⓘ <span>About</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <span class="status-light"></span>
+        All systems operational
+        <small>ITSFOUR HUB © 2026</small>
+    </div>
+</aside>
+
+<main class="content">
+
+<section id="home" class="hero">
+    <div class="eyebrow">
+        <span class="status-light"></span>
+        WELCOME TO MY DIGITAL SPACE
+    </div>
+
+    <h1>ITSFOUR_<span> HUB</span></h1>
+
+    <p class="hero-description">
+        A personal developer space for projects, tools,
+        modifications and technical publications.
+    </p>
+
+    <div class="hero-actions">
+        <a href="#posts" class="button primary">Explore Publications ↗</a>
+        <a href="#projects" class="button secondary">View Projects</a>
+    </div>
+
+    <div class="terminal-command">
+        <span class="prompt">itsfour@hub:~$</span>
+        <span>system.status</span>
+        <span class="cursor"></span>
+        <span class="command-result">[ RUNNING ]</span>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat-card">
+        <small>PUBLICATIONS</small>
+        <strong id="post-count">--</strong>
+    </div>
+
+    <div class="stat-card">
+        <small>PROJECTS</small>
+        <strong>--</strong>
+    </div>
+
+    <div class="stat-card">
+        <small>STATUS</small>
+        <strong class="green-text">ONLINE</strong>
+    </div>
+</section>
+
+<section id="posts" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="section-index">01 / CONTENT</span>
+            <h2>Publications<span>.</span></h2>
+        </div>
+
+        <span class="section-note">LATEST UPDATES</span>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input id="search" type="search"
+        placeholder="Search publications..." autocomplete="off">
+        <kbd>SEARCH</kbd>
+    </div>
+
+    <div id="post-list" class="post-grid">
+        <div class="loading">Loading publications...</div>
+    </div>
+
+    <div id="empty" class="empty" hidden>
+        No publications found.
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="section-index">02 / DEVELOPMENT</span>
+            <h2>Projects<span>.</span></h2>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-icon">⌘</div>
+        <div>
+            <h3>ITSFOUR_ HUB</h3>
+            <p>Personal developer website powered by GitHub Pages.</p>
+            <span class="tag">WEB DEVELOPMENT</span>
+        </div>
+        <span class="project-status">ACTIVE</span>
+    </div>
+</section>
+
+<section id="downloads" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="section-index">03 / RESOURCES</span>
+            <h2>Downloads<span>.</span></h2>
+        </div>
+    </div>
+
+    <div class="empty">
+        <span class="green-text">[ INFO ]</span>
+        No downloadable resources yet.
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="section-heading">
+        <div>
+            <span class="section-index">04 / INFORMATION</span>
+            <h2>About<span>.</span></h2>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <p>
+            Welcome to ITSFOUR_ HUB.
+            This is a personal space for sharing projects,
+            development notes, tools and publications.
+        </p>
+        <p class="green-text">Built with HTML, CSS, JavaScript & Markdown.</p>
+    </div>
+</section>
+
+<footer>
+    <span>© 2026 ITSFOUR_ HUB</span>
+    <span>DESIGNED FOR DEVELOPERS <span class="green-text">●</span></span>
+</footer>
+
+</main>
+</div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

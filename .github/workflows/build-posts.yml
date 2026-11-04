@@ -1,0 +1,97 @@
+name: Build Publications
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'posts/**'
+      - '.github/workflows/build-posts.yml'
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate publications index
+        run: |
+          python3 <<'PY'
+          import os
+          import json
+          import re
+
+          POSTS_DIR = "posts"
+          OUTPUT = os.path.join(POSTS_DIR, "index.json")
+
+          posts = []
+
+          for filename in os.listdir(POSTS_DIR):
+              if not filename.endswith(".md"):
+                  continue
+
+              filepath = os.path.join(POSTS_DIR, filename)
+
+              with open(filepath, "r", encoding="utf-8") as f:
+                  content = f.read()
+
+              metadata = {}
+
+              match = re.match(
+                  r'^---\s*\n(.*?)\n---\s*\n?',
+                  content,
+                  re.DOTALL
+              )
+
+              if match:
+                  for line in match.group(1).splitlines():
+                      if ":" not in line:
+                          continue
+
+                      key, value = line.split(":", 1)
+                      metadata[key.strip()] = value.strip().strip('"').strip("'")
+
+              slug = filename[:-3]
+
+              posts.append({
+                  "slug": slug,
+                  "title": metadata.get("title", slug.replace("-", " ").title()),
+                  "description": metadata.get("description", ""),
+                  "category": metadata.get("category", "GENERAL"),
+                  "date": metadata.get("date", ""),
+                  "tags": [
+                      tag.strip()
+                      for tag in metadata.get("tags", "[]").strip("[]").split(",")
+                      if tag.strip()
+                  ]
+              })
+
+          posts.sort(
+              key=lambda post: post["date"],
+              reverse=True
+          )
+
+          with open(OUTPUT, "w", encoding="utf-8") as f:
+              json.dump(posts, f, ensure_ascii=False, indent=4)
+
+          print(f"Generated {len(posts)} publications.")
+          PY
+
+      - name: Commit generated index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add posts/index.json
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update publications index"
+            git push
+          fi
