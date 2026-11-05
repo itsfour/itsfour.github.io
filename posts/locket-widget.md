@@ -33,18 +33,11 @@ tags:
 
   <br>
 
-  > 💡 *Các phiên bản tùy biến hướng đến trải nghiệm đầy đủ tính năng, gọn nhẹ và thuận tiện hơn.*
+  > 💡 *Phiên bản tùy biến hướng đến trải nghiệm đầy đủ tính năng, gọn nhẹ và thuận tiện hơn.*
 
 </div>
 
 <br>
-
----
-
-## ✨ Dự án
-
-- **Duolingo ++**: Mở khóa các tính năng Super/Max, hỗ trợ học tập không giới hạn. Tối ưu ứng dụng, giảm các thành phần không cần thiết và mang lại trải nghiệm sử dụng mượt mà hơn.
-- **Locket Widget ++**: Phiên bản Locket Widget tùy biến, mở khóa Locket Gold.
 
 ---
 
@@ -71,8 +64,8 @@ Locket Widget là ứng dụng mạng xã hội tập trung vào việc chia s�
 ### 📸 Screenshots
 
 <div align="center">
-  <img src="locket_screenshots/01-locket-widget.png" width="180" alt="Locket Widget - thêm bạn thân vào màn hình chính">
-  <img src="locket_screenshots/02-send-photos.png" width="180" alt="Locket Widget - gửi ảnh cho bạn bè">
+  <img src="https://liteapks.com/wp-content/uploads/2026/09/locket-widget-2.webp" width="180" alt="Locket Widget - thêm bạn thân vào màn hình chính">
+  <img src="[locket_screenshots/02-send-photos.png](https://liteapks.com/wp-content/uploads/2026/09/locket-widget-2.webp)" width="180" alt="Locket Widget - gửi ảnh cho bạn bè">
   <img src="locket_screenshots/03-chat.png" width="180" alt="Locket Widget - trò chuyện và phản hồi ảnh">
   <img src="locket_screenshots/04-receive-photos.png" width="180" alt="Locket Widget - nhận ảnh từ bạn bè">
 </div>
@@ -118,12 +111,6 @@ Theo phần **Data safety** trên trang tham khảo:
 
 <div align="center">
 
-##### Duolingo ++
-
-[![DUOLINGO APK](https://img.shields.io/badge/DUOLING_++_V6.103.6-00A2FF?style=for-the-badge&logo=android&logoColor=white)](https://www.dropbox.com/scl/fi/ya3kp3qidf03kmjoo9dei/Duolingo_v6.103.6_-_Premium.apk?rlkey=0i38w7b98hw41lchjsn0ygxao&st=o37t1c4g&dl=1)
-
-<br>
-
 ##### Locket Widget ++
 
 [![LOCKET APK](https://img.shields.io/badge/LOCKET_WIDGET++_v1.221-00A2FF?style=for-the-badge&logo=android&logoColor=white)](https://www.dropbox.com/scl/fi/g03bxbd54dhlxfj9hrnkk/Locket-Widget-v1.221.apk?rlkey=7d7eazhm8txpfc48fsenbbdei&st=y4ijtech&dl=1)
@@ -131,8 +118,6 @@ Theo phần **Data safety** trên trang tham khảo:
 *Nhấn vào nút ứng dụng để tải tệp APK hiện đang được liên kết.*
 
 </div>
-
-> ⚠️ **Lưu ý:** Link tải Locket hiện tại vẫn trỏ đến tệp **v1.221**. Thông tin **v1.245.3** ở trên là phiên bản tham khảo được tổng hợp từ trang giới thiệu, không phải xác nhận rằng link tải đã được cập nhật lên phiên bản đó.
 
 ---
 
