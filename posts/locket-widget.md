@@ -12,7 +12,7 @@ tags:
 ---
 <!-- HEADER SECTION -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00aaff,100:0055ff&height=200&section=header&text=PROJECTS%20APK&fontSize=60&fontColor=ffffff&fontAlignY=35&desc=Modified&descSize=35&descAlignY=60" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00aaff,100:0055ff&height=200&section=header&text=LOCKET%20WIDGET++&fontSize=60&fontColor=ffffff&fontAlignY=35&desc=Modified&descSize=35&descAlignY=60" width="100%"/>
   <img src="https://github.com/itsfour/itsfour/blob/main/generated/itsfour.svg" width="150" alt="itsfourvn animated name">
   <br><br>
 
@@ -52,7 +52,7 @@ Locket Widget là ứng dụng mạng xã hội tập trung vào việc chia s�
 | Thông tin | Chi tiết |
 |---|---|
 | Tên ứng dụng | Locket Widget |
-| Phiên bản tham khảo | **1.245.3** |
+| Phiên bản | **1.245.3** |
 | Nhà phát triển | Locket Labs Inc. |
 | Danh mục | Social |
 | Dung lượng | 66.1 MB |
@@ -65,12 +65,12 @@ Locket Widget là ứng dụng mạng xã hội tập trung vào việc chia s�
 
 <div align="center">
   <img src="https://liteapks.com/wp-content/uploads/2026/09/locket-widget-2.webp" width="180" alt="Locket Widget - thêm bạn thân vào màn hình chính">
-  <img src="[locket_screenshots/02-send-photos.png](https://liteapks.com/wp-content/uploads/2026/09/locket-widget-2.webp)" width="180" alt="Locket Widget - gửi ảnh cho bạn bè">
-  <img src="locket_screenshots/03-chat.png" width="180" alt="Locket Widget - trò chuyện và phản hồi ảnh">
-  <img src="locket_screenshots/04-receive-photos.png" width="180" alt="Locket Widget - nhận ảnh từ bạn bè">
+  <img src="https://liteapks.com/wp-content/uploads/2026/09/locket-widget-3.webp" width="180" alt="Locket Widget - gửi ảnh cho bạn bè">
+  <img src="https://liteapks.com/wp-content/uploads/2026/09/locket-widget-4.webp" width="180" alt="Locket Widget - trò chuyện và phản hồi ảnh">
+  <img src="https://liteapks.com/wp-content/uploads/2026/09/locket-widget-5.webp" width="180" alt="Locket Widget - nhận ảnh từ bạn bè">
 </div>
 
-*Ảnh được cắt từ ảnh chụp trang giới thiệu Locket Widget do người dùng cung cấp; chất lượng phụ thuộc vào ảnh chụp nguồn.*
+*Ảnh được cắt từ ảnh chụp trang giới thiệu Locket Widget do NPH cung cấp.*
 
 ### Tính năng nổi bật
 
@@ -113,7 +113,7 @@ Theo phần **Data safety** trên trang tham khảo:
 
 ##### Locket Widget ++
 
-[![LOCKET APK](https://img.shields.io/badge/LOCKET_WIDGET++_v1.221-00A2FF?style=for-the-badge&logo=android&logoColor=white)](https://www.dropbox.com/scl/fi/g03bxbd54dhlxfj9hrnkk/Locket-Widget-v1.221.apk?rlkey=7d7eazhm8txpfc48fsenbbdei&st=y4ijtech&dl=1)
+[![LOCKET APK](https://img.shields.io/badge/LOCKET_WIDGET++_v1.221-00A2FF?style=for-the-badge&logo=android&logoColor=white)](https://www.dropbox.com/scl/fi/l490z96ktscbwv9mti61x/Locket-Widget-v1.221.apk?rlkey=ozrc4toys43ztfszf0ntrp7ad&st=gzs898cs&dl=1)
 
 *Nhấn vào nút ứng dụng để tải tệp APK hiện đang được liên kết.*
 
