@@ -2,7 +2,7 @@
 title: "Locket Widget ++ — Gold Unlocked"
 description: "Khám phá Locket Widget ++ phiên bản Gold Unlocked với trải nghiệm chia sẻ ảnh và kết nối bạn thân."
 category: "Android"
-date: "2026-11-05"
+date: "2026-11-01"
 tags:
   - Android
   - MOD
