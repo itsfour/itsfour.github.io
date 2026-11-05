@@ -13,7 +13,7 @@ tags:
 <!-- HEADER SECTION -->
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00aaff,100:0055ff&height=200&section=header&text=LOCKET%20WIDGET++&fontSize=60&fontColor=ffffff&fontAlignY=35&desc=Modified&descSize=35&descAlignY=60" width="100%"/>
-  <img src="https://github.com/itsfour/itsfour/blob/main/generated/itsfour.svg" width="150" alt="itsfourvn animated name">
+  <img src="https://raw.githubusercontent.com/itsfour/itsfour/refs/heads/main/generated/itsfour.svg" width="150" alt="itsfourvn animated name">
   <br><br>
 
   <!-- INFO -->
